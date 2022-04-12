@@ -5,8 +5,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Register from '../../componenets/Register/Register';
-import Login from '../../componenets/Login/Login';
+import Register from '../../components/Register/Register';
+import Login from '../../components/Login/Login';
 
 const style = {
   position: 'absolute',
