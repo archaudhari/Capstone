@@ -10,6 +10,9 @@ import Footer from './componenets/Footer/Footer';
 import Home from './routes/Home/Home';
 import Product from './routes/Product/Product';
 import Cart from './routes/Cart/Cart';
+import Login from './components/Login/Login.js'
+import Register from './components/Register/Register.js'
+import ForgotPassword from './components/ForgotPassword/ForgotPassword.js'
 
 
 function App() {
@@ -21,12 +24,17 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             
-            
             <Route path="/shop" element={<Shop /> }/>
 
             <Route path="/product" element={<Product /> }/>
             
             <Route path="/cart" element={<Cart /> }/>
+
+            <Route path="/password/forgot" element={<ForgotPassword/>}/>
+
+            <Route path='/login' element={<Login/>}/>
+
+            <Route path='/register' element={<Register/>}/>
           </Routes>
           <Footer />
       </BrowserRouter>
