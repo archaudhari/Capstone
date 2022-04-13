@@ -5,8 +5,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Register from '../../components/Register/Register';
-import Login from '../../components/Login/Login';
+import Register from '../../componenets/Register/Register';
+import Login from '../../componenets/Login/Login';
 
 const style = {
   position: 'absolute',
@@ -92,6 +92,7 @@ const PopupLogin = ({ open, setOpen }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+        
         <Box sx={style}>
         <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

@@ -4,16 +4,15 @@ import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-multi-carousel/lib/styles.css";
-import Header from './componenets/Header/Header';
+import Header from './Layout/Header/Header';
 import Shop from './routes/Shop/Shop';
-import Footer from './componenets/Footer/Footer';
+import Footer from './Layout/Footer/Footer';
 import Home from './routes/Home/Home';
 import Product from './routes/Product/Product';
 import Cart from './routes/Cart/Cart';
-import Login from './components/Login/Login.js'
-import Register from './components/Register/Register.js'
-import ForgotPassword from './components/ForgotPassword/ForgotPassword.js'
-
+import Register from './componenets/Register/Register';
+import Login from './componenets/Login/Login';
+import ForgotPassword from './componenets/ForgotPassword/ForgotPassword';
 
 function App() {
   return (
@@ -30,11 +29,12 @@ function App() {
             
             <Route path="/cart" element={<Cart /> }/>
 
-            <Route path="/password/forgot" element={<ForgotPassword/>}/>
-
-            <Route path='/login' element={<Login/>}/>
-
-            <Route path='/register' element={<Register/>}/>
+            <Route path="/register" element={<Register /> }/>
+            
+            <Route path="/login" element={<Login /> }/>
+            
+            <Route path="/forgotpassword" element={<ForgotPassword /> }/>
+          
           </Routes>
           <Footer />
       </BrowserRouter>

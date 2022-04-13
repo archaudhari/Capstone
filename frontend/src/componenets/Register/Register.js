@@ -1,12 +1,12 @@
 import React,{useRef} from 'react'
-import {Link} from 'react-router-dom'
-import FaceIcon from '@material-ui/icons/Face'
-import ShopIcon from '@material-ui/icons/Shop'
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import CategoryIcon from "@material-ui/icons/Category";
-import ContactIcon from '@material-ui/icons/Contacts'
-import './Register.css'
-import LockOpenIcon from "@material-ui/icons/LockOpen";
+import {Link} from 'react-router-dom';
+import FaceIcon from '@mui/icons-material/Face';
+import ShopIcon from '@mui/icons-material/Shop';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import CategoryIcon from '@mui/icons-material/Category';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import './Register.css';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const Register = () => {
   const customerTab = useRef(null);
@@ -66,7 +66,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="customerMobile">
-                <ContactIcon/>
+                <ContactsIcon/>
                   <input
                     type="mobileNo"
                     placeholder="Mobile No."
@@ -124,7 +124,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="sellerMobile">
-                <ContactIcon/>
+                <ContactsIcon/>
                   <input
                     type="MobileNo"
                     placeholder="Mobile no."

@@ -1,7 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
+import {Link} from 'react-router-dom';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import './Login.css'
 
 

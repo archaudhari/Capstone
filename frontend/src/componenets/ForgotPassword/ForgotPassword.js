@@ -1,6 +1,6 @@
 import React from 'react'
-import MetaData from './MetaData'
-import MailOutlineIcon from '@material-ui/icons/MailOutline'
+import MetaData from './MetaData';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import './ForgotPassword.css'
 
 const ForgotPassword = () => {  

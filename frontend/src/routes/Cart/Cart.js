@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import "./Cart.css";
 import CartItemCard from "./CartItemCard";
-import { Typography } from "@material-ui/core";
-import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import Typography from '@mui/material/Typography';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { Link } from "react-router-dom";
 
 const Cart = () => {
