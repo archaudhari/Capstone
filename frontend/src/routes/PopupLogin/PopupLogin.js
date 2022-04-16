@@ -13,12 +13,13 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 350,
-  height:500,
-  bgcolor: 'background.paper',
-  border: '2px solid #fff',
+  width: 342,
+  height:480,
+  bgcolor: '#5b5f97',
+  border: '2px solid #5b5f97',
   boxShadow: 24,
-  textAlign: 'center'
+  textAlign: 'center',
+  borderRadius:'10px',
 };
 
 function TabPanel(props) {
@@ -97,8 +98,8 @@ const PopupLogin = ({ open, setOpen }) => {
         <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} style={{width:'100%'}} aria-label="basic tabs example">
-          <Tab style={{width:'50%'}} label="Login" {...a11yProps(0)} />
-          <Tab  style={{width:'50%'}} label="Register" {...a11yProps(1)} />
+          <Tab style={{width:'50%',color: 'white'}} label="Login" {...a11yProps(0)} />
+          <Tab  style={{width:'50%',color: 'white'}} label="Register" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

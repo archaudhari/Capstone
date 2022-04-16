@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import Typography from '@mui/material/Typography';
 import './Login.css'
 
 
@@ -27,9 +26,7 @@ const Login = (handleChange) => {
                 </div>
                 <Link to='password/forgot'>Forget Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
-                <Typography>new user?
-                <Link to='/register'> Register here</Link>
-                </Typography>
+                <Link to='/register'> new user?Register here</Link>
               </form>
             </div>
         </>
