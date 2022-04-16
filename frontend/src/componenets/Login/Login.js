@@ -2,19 +2,14 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
+import Typography from '@mui/material/Typography';
 import './Login.css'
 
 
-const Login = () => {
+const Login = (handleChange) => {
   return (
     <>
-          <div className="LoginContainer">
             <div className="LoginBox">
-              <div>
-                <div className="loginHeader">
-                  <p>LOGIN</p>
-                </div>
-              </div>
               <form className="loginForm">
                 <div className="loginEmail">
                 <MailOutlineIcon/>
@@ -32,10 +27,11 @@ const Login = () => {
                 </div>
                 <Link to='password/forgot'>Forget Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
-                <Link to='/register'>new user? Register here</Link>
+                <Typography>new user?
+                <Link to='/register'> Register here</Link>
+                </Typography>
               </form>
             </div>
-          </div>
         </>
   );
 }
