@@ -1,3 +1,19 @@
 PORT= add port 
 
 DB_URI=add address of db
+
+JWT_SECRET=add any text eg.(ABCDEFGHIJKLMNOPQRST)
+
+JWT_EXPIRE=5d
+
+COOKIE_EXPIRE=5
+
+SMPT_SERVICE="gmail"
+
+SMPT_MAIL="add mail"
+
+SMPT_PASSWORD="add password"
+
+SMPT_HOST= smtp.gmail.com
+
+SMPT_PORT=465
