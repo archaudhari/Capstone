@@ -1,27 +1,39 @@
-const mongoose = require ('mongoose');
+const mongoose = require("mongoose");
 
 const shopSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:[true,"Please enter shop name"],
-        trim:true
+    name: {
+        type : String,
+        required:[true, "Please enter Shop name"]
     },
-
-   description: {
-        type:String,
-        required:[true,"Please enter shop description"]
+    contact:{
+        type : Number,
+        required:[true, "Please Enter Shop Contact Number"],
     },
-    address: {
-        type:String,
-        required:[true,"Please enter shop address"]
+    city : {
+        type: String,
+        required:[true, "Please Enter Shop City"],
     },
-
-   
+    state: {
+        type: String,
+        required:[true, "Please Enter Shop State"]
+    },
+    country: {
+        type: String,
+        required:[true, "Please enter Shop Country"],
+    },
+    category: {
+        type: String,
+        required:[true, "Please enter Shop Category"],
+    },
+    pinCode : {
+        type: String,
+        required:[true, "Please enter Shop Pincode"],
+    },
+    
     ratings:{
         type:Number,
         default:0
     },
-
     images:[
         {
             public_id:{
@@ -34,19 +46,10 @@ const shopSchema = new mongoose.Schema({
             }
         }
     ],
-
-    category:{
-        type:String,
-        required:[true,"please enter product category"],
-
-    },
-
-
     numOfReviews:{
         type:Number,
         default:0
     },
-
     reviews:[
         {
             user:{
@@ -73,15 +76,10 @@ const shopSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
-   
-
-
     createdAt:{
         type:Date,
         default:Date.now
     }
+});
 
-
-})
-
-module.exports = mongoose.model("Shop",shopSchema)
+module.exports = mongoose.model("Shop", shopSchema);

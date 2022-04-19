@@ -5,17 +5,27 @@ const { isAuthenticatedUser,authorizeRoles } = require("../middleware/auth");
 
 const router = express.Router();
 
-router.route("/products").get( getAllProducts);
+// getting all products route
+router.route("/products").get(getAllProducts);
 
-router.route("/seller/product/new").post(isAuthenticatedUser,authorizeRoles("seller"),createProduct);
-router.route("/seller/product/:id")
-.put(isAuthenticatedUser,authorizeRoles("seller"),updateProduct)
-.delete(isAuthenticatedUser,authorizeRoles("seller"),deleteProduct);
+// creating new product route
+router.route("/unique/products/new").post(isAuthenticatedUser, authorizeRoles("seller"), createProduct);
 
-router.route("/product/:id").get(getProductDetails);
+// updating and delete product route ---- admin, seller
+router.route("/unique/products/:id")
+.put(isAuthenticatedUser, authorizeRoles("seller"), updateProduct)
+.delete(isAuthenticatedUser, authorizeRoles("admin" , "seller"), deleteProduct)
 
-router.route("/review").put(isAuthenticatedUser, createProductReview);
+// get products details --- admin, seller, user
+router.route("/products/:id").get(getProductDetails);
 
-router.route("/reviews").get(getProductReviews).delete(isAuthenticatedUser,deleteReview);
+// create reviews --- customer, admin
+router.route("/product/review").put(isAuthenticatedUser,authorizeRoles("user", "admin"), createProductReview);
 
-module.exports = router
+// get reviews --- admin, seller, user
+router.route("/product/reviews").get(getProductReviews)
+
+// delete products admin, seller
+router.route("/products/reviews").delete(isAuthenticatedUser, authorizeRoles("admin", "customer"), deleteReview);
+    
+module.exports = router;

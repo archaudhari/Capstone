@@ -21,8 +21,8 @@ export const ProductCard = styled.div`
 
     > img {
         border-radius: 10px;
-        height:200px;
-        width: 250px;
+        min-height:200px;
+        min-width: 250px;
         margin:10px;
         padding:15px;
         background-color: #fff;

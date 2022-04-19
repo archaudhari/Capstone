@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-import { MainContainer, TopContainer, CommonBtn, CardsContainer, StyledLink } from '../../GlobalStyle';
+import { MainContainer, TopContainer, CommonBtn, CardsContainer, FormContainer } from '../../GlobalStyle';
 import ProductCards from '../../componenets/ProductCards/ProductCards';
 //import { products } from '../../constant/data';
 import {getProduct} from '../../actions/productAction'
@@ -19,9 +19,10 @@ const Product = () => {
       <Medadata title='localMart - All Products' /> 
       <TopContainer>
         <h4>Products</h4>
-        <StyledLink to='/cart'>
-          <CommonBtn>View Cart</CommonBtn>
-        </StyledLink>
+          <FormContainer>
+            <input type='text' placeholder='Search City' />
+            <CommonBtn>Search</CommonBtn>
+          </FormContainer>
       </TopContainer>
       <CardsContainer>
       {
@@ -40,3 +41,4 @@ const Product = () => {
 }
 
 export default Product
+

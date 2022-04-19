@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContainer, CommonBtn, TopContainer } from '../../GlobalStyle';
+import { CommonBtn, TopContainer } from '../../GlobalStyle';
 import { HomeContainer, ShopCardContainer, ShopCarousel, StyledLink } from './HomeStyle';
 import Banner from '../../componenets/Banner/Banner';
 import { shops } from '../../constant/data';
@@ -7,10 +7,11 @@ import Slider from '../../componenets/Slider/Slider';
 import Medadata from '../../Layout/Medadata';
  
 const Home = () => {
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 5
+    items: 4
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -21,7 +22,6 @@ const responsive = {
     items: 1
   }
 };
-
   return (
     <HomeContainer>
 
@@ -30,11 +30,7 @@ const responsive = {
 
       <ShopCardContainer>
         <TopContainer>
-          <h4>Shops</h4>
-          <FormContainer>
-            <input type='text' placeholder='Search City' />
-            <CommonBtn>Search</CommonBtn>
-          </FormContainer>
+          <h4>Best Shops</h4>
           <StyledLink to='/shop'>
             <CommonBtn>Explore Shops</CommonBtn>
           </StyledLink>
