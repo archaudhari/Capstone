@@ -14,6 +14,7 @@ const product = require("./routes/productRoute");
 const shop = require("./routes/shopRoute");
 const user = require("./routes/userRoute");
 const seller = require("./routes/shopRoute");
+const order = require("./routes/orderRoute");
 
 
 
@@ -21,6 +22,7 @@ app.use("/api/v1",product);
 app.use("/api/v1",shop);
 app.use("/api/v1",user);
 app.use("/api/v1",seller);
+app.use("/api/v1",order);
 
 // middleware
 
