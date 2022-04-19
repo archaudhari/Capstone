@@ -10,15 +10,14 @@ import Footer from './Layout/Footer/Footer';
 import Home from './routes/Home/Home';
 import Product from './routes/Product/Product';
 import Cart from './routes/Cart/Cart';
-import Register from './componenets/Register/Register';
-import Login from './componenets/Login/Login';
+//import Register from './componenets/Register/Register';
+//import Login from './componenets/Login/Login';
 import ForgotPassword from './componenets/ForgotPassword/ForgotPassword';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-  
         <Header />
           <Routes>
             <Route path="/" element={<Home />}/>
@@ -29,16 +28,15 @@ function App() {
             
             <Route path="/cart" element={<Cart /> }/>
 
-            <Route path="/register" element={<Register /> }/>
+            {/* <Route path="/register" element={<Register /> }/>
             
-            <Route path="/login" element={<Login /> }/>
+            <Route path="/login" element={<Login /> }/> */}
             
             <Route path="/forgotpassword" element={<ForgotPassword /> }/>
           
           </Routes>
           <Footer />
-      </BrowserRouter>
-
+          </BrowserRouter>
     </div>
   );
 }
