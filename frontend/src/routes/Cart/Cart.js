@@ -4,9 +4,16 @@ import CartItemCard from "./CartItemCard";
 import Typography from '@mui/material/Typography';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { Link } from "react-router-dom";
+import { products } from '../../constant/data';
 
 const Cart = () => {
 
+  // const order={
+  //   url:'https://m.media-amazon.com/images/I/81kJzDOwjNL._AC_UL320_.jpg',
+  //   id:'product1',
+  //   name:'T-shirt',
+  //   price:'500'
+  // }
   return (
     <Fragment>
       
@@ -18,6 +25,7 @@ const Cart = () => {
         </div>
       
         <Fragment>
+          {
           <div className="cartPage">
             <div className="cartHeader">
               <p>Product</p>
@@ -25,9 +33,14 @@ const Cart = () => {
               <p>Subtotal</p>
             </div>
 
-            {
+            { products && products.map(product => (
                 <div className="cartContainer" >
-                  <CartItemCard />
+                     <CartItemCard
+                     id={product.id}
+                     title={product.title}
+                     url={product.url}
+                     price={product.price}
+                     />
                   <div className="cartInput">
                     <button
                       // onClick={() =>
@@ -50,16 +63,17 @@ const Cart = () => {
                     </button>
                   </div>
                   <p className="cartSubtotal">{`₹${
-                    500 * 1
+                    product.price
                   }`}</p>
                 </div>
-              }
+                 ))
+                }
 
             <div className="cartGrossProfit">
               <div></div>
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
-                <p>{`₹${500}`}</p>
+                <p>{`₹${2900}`}</p>
               </div>
               <div></div>
               <div className="checkOutBtn">
@@ -67,6 +81,7 @@ const Cart = () => {
               </div>
             </div>
           </div>
+         }
         </Fragment>
     </Fragment>
   );

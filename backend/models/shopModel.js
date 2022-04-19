@@ -17,7 +17,7 @@ const shopSchema = new mongoose.Schema({
     },
 
    
-    rating:{
+    ratings:{
         type:Number,
         default:0
     },
@@ -49,6 +49,11 @@ const shopSchema = new mongoose.Schema({
 
     reviews:[
         {
+            user:{
+                type:mongoose.Schema.ObjectId,
+                ref: "User",
+                required: true,
+            },
             name:{
                 type:String,
                 required:true,

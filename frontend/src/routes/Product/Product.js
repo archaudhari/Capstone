@@ -17,7 +17,7 @@ const Product = () => {
       </TopContainer>
       <CardsContainer>
       {
-        products.map(product => (
+        products && products.map(product => (
           <ProductCards
             id={product.id}
             title={product.title}

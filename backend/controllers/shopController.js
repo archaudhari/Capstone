@@ -127,3 +127,107 @@ exports.deleteShop = catchAsyncErrors (async (req,res,next)=>{
         message:"Shop deleted successfully"
     })
 })
+
+
+// Create New Review or Update the review
+exports.createShopReview = catchAsyncErrors(async (req, res, next) => {
+    const { rating, comment, shopId } = req.body;
+  
+    const review = {
+      user: req.user._id,
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+    };
+  
+    const shop = await Shop.findById(shopId);
+  
+    const isReviewed = shop.reviews.find(
+      (rev) => rev.user.toString() === req.user._id.toString()
+    );
+  
+    if (isReviewed) {
+      shop.reviews.forEach((rev) => {
+        if (rev.user.toString() === req.user._id.toString())
+          (rev.rating = rating), (rev.comment = comment);
+      });
+    } else {
+      shop.reviews.push(review);
+      shop.numOfReviews = shop.reviews.length;
+    }
+  
+    let avg = 0;
+  // 4,4,4,5,5,3,3,4 = 32/8 = 4 (overall rating)
+    shop.reviews.forEach((rev) => {
+      avg += rev.rating;
+    });
+  
+    shop.ratings = avg / shop.reviews.length;
+  
+    await shop.save({ validateBeforeSave: false });
+  
+    res.status(200).json({
+      success: true,
+    });
+  })
+
+  // Get All Reviews of a shop
+exports.getShopReviews = catchAsyncErrors(async (req, res, next) => {
+    const shop = await Shop.findById(req.query.id);
+  
+    if (!shop) {
+      return next(new ErrorHander("Shop not found", 404));
+    }
+  
+    res.status(200).json({
+      success: true,
+      reviews: shop.reviews,
+    });
+  });
+  
+  // Delete Review
+  exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
+    const shop = await Shop.findById(req.query.shopId);
+  
+    if (!shop) {
+      return next(new ErrorHander("Shop not found", 404));
+    }
+  
+    const reviews = shop.reviews.filter(
+      (rev) => rev._id.toString() !== req.query.id.toString()
+    );
+  
+    let avg = 0;
+  
+    reviews.forEach((rev) => {
+      avg += rev.rating;
+    });
+  
+    let ratings = 0;
+  
+    if (reviews.length === 0) {
+      ratings = 0;
+    } else {
+      ratings = avg / reviews.length;
+    }
+  
+    const numOfReviews = reviews.length;
+  
+    await Shop.findByIdAndUpdate(
+      req.query.shopId,
+      {
+        reviews,
+        ratings,
+        numOfReviews,
+      },
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+  
+    res.status(200).json({
+      success: true,
+    });
+  });

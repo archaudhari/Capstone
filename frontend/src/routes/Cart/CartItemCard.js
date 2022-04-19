@@ -2,13 +2,13 @@ import React from "react";
 import "./CartItemCard.css";
 import { Link } from "react-router-dom";
 
-const CartItemCard = () => {
+const CartItemCard = ({url,id,title,price}) => {
   return (
     <div className="CartItemCard">
-      <img src={'https://m.media-amazon.com/images/I/81kJzDOwjNL._AC_UL320_.jpg'} alt="ssa" />
+      <img src={url} alt="ssa" />
       <div>
-        <Link to={`/product/electronics`}>T-shirt</Link>
-        <span>{`Price: ₹${500}`}</span>
+        <Link to={`/product/${id}`}>{title}</Link>
+        <span>{`₹${price}`}</span>
         <p>Remove</p>
       </div>
     </div>
