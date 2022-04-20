@@ -13,13 +13,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 403,
-  height:480,
-  bgcolor: '#5b5f97',
-  border: '2px solid #5b5f97',
-  boxShadow: 24,
+  width: 350,
+  height:500,
+  bgcolor: '#b8b8d1',
+  border: '2px solid #fff',
+  boxShadow: 20,
   textAlign: 'center',
-  borderRadius:'10px',
 };
 
 function TabPanel(props) {

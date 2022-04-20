@@ -2,6 +2,9 @@ import axios from 'axios';
 import {LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
+    REGISTER_USER_FAIL,
+    REGISTER_USER_REQUEST,
+    REGISTER_USER_SUCCESS,
     CLEAR_ERRORS} from '../constant/userConstants'
 
 
@@ -18,6 +21,21 @@ export const login = (email,password)=>async (dispatch)=>{
     } catch (error) {
 
         dispatch({type:LOGIN_FAIL , payload:error.response.data.meassage });
+    }
+}
+export const register = (userData)=>async (dispatch)=>{
+    try {
+        dispatch({type:REGISTER_USER_REQUEST})
+
+        // const config={headers:{"Content-Type":"application/json"}}
+
+        const { data }=await axios.post("http://localhost:4000/api/v1/register",userData)
+
+        dispatch({type:REGISTER_USER_SUCCESS,payload:data.user})
+
+    } catch (error) {
+
+        dispatch({type:REGISTER_USER_FAIL , payload:error.response.data.meassage });
     }
 }
 

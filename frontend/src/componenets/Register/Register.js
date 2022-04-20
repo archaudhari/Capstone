@@ -3,10 +3,12 @@ import {Link} from 'react-router-dom';
 import FaceIcon from '@mui/icons-material/Face';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import './Register.css';
+import {register} from '../../actions/userAction'
 import LockOpenIcon from '@mui/icons-material/LockOpen';
+import {useDispatch} from 'react-redux'
 
 const Register = () => {
-  
+  const dispatch=useDispatch();
     const [user,setUser]=useState({
       name:"",
       email:"",
@@ -25,7 +27,7 @@ const Register = () => {
       myForm.set("email",email)
       myForm.set("password",password)
       myForm.set("avatar",avatar)
-      console.log("signup submited")
+      dispatch(register({name,email,password}))
       };
 
     const registerDataChange=(e)=>{
