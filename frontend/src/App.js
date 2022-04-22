@@ -12,6 +12,7 @@ import Product from './routes/Product/Product';
 import Cart from './routes/Cart/Cart';
 import Profile from './routes/Profile/Profile';
 import ForgotPassword from './componenets/ForgotPassword/ForgotPassword';
+import ProductDetails from './componenets/Product/ProductDetails';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
             <Route path="/product" element={<Product /> }/>
             
             <Route path="/cart" element={<Cart /> }/>
+
+            <Route path="/product/:id" element={<ProductDetails /> }/>
 
             <Route path="/account" element={<Profile /> }/>
             
