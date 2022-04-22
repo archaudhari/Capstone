@@ -13,6 +13,7 @@ import Cart from './routes/Cart/Cart';
 import Profile from './routes/Profile/Profile';
 import ForgotPassword from './componenets/ForgotPassword/ForgotPassword';
 import ProductDetails from './componenets/Product/ProductDetails';
+import ErrorPage from './routes/ErrorPage/ErrorPage';
 
 function App() {
   return (
@@ -24,16 +25,22 @@ function App() {
             
             <Route path="/shop" element={<Shop /> }/>
 
+
             <Route path="/product" element={<Product /> }/>
             
+
             <Route path="/cart" element={<Cart /> }/>
 
             <Route path="/product/:id" element={<ProductDetails /> }/>
 
             <Route path="/account" element={<Profile /> }/>
             
+
             <Route path="/forgotpassword" element={<ForgotPassword /> }/>
-          
+
+            
+            <Route path="*" element={<ErrorPage /> }/>
+
           </Routes>
           <Footer />
           </BrowserRouter>

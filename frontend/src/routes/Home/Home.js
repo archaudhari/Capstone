@@ -2,10 +2,10 @@ import React from 'react';
 import { CommonBtn, TopContainer } from '../../GlobalStyle';
 import { HomeContainer, ShopCardContainer, ShopCarousel, StyledLink } from './HomeStyle';
 import Banner from '../../componenets/Banner/Banner';
-import { shops } from '../../constant/data';
 import Slider from '../../componenets/Slider/Slider';
 import Medadata from '../../Layout/Medadata';
- 
+import { shops } from '../../constant/data';
+
 const Home = () => {
 
 const responsive = {
@@ -39,10 +39,9 @@ const responsive = {
         <ShopCarousel responsive={responsive} infinite={true} autoPlay draggable={false} swipeable={false} centerMode={true} removeArrowOnDeviceType={["tablet", "mobile"]}
           temClass="carousel-item-padding-40-px"  containerClass="carousel-container">
             {
-              shops.map(shop => (
-              <StyledLink to='shopDetails'>
+              shops && shops.map(shop => (
+              <StyledLink to='shopDetails' key={shop.id} >
                 <Slider 
-                  key={shop.id}
                   id={shop.id}
                   url={shop.url}
                   category={shop.category}
