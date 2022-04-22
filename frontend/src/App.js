@@ -10,8 +10,7 @@ import Footer from './Layout/Footer/Footer';
 import Home from './routes/Home/Home';
 import Product from './routes/Product/Product';
 import Cart from './routes/Cart/Cart';
-//import Register from './componenets/Register/Register';
-//import Login from './componenets/Login/Login';
+import Profile from './routes/Profile/Profile';
 import ForgotPassword from './componenets/ForgotPassword/ForgotPassword';
 
 function App() {
@@ -28,9 +27,7 @@ function App() {
             
             <Route path="/cart" element={<Cart /> }/>
 
-            {/* <Route path="/register" element={<Register /> }/>
-            
-            <Route path="/login" element={<Login /> }/> */}
+            <Route path="/account" element={<Profile /> }/>
             
             <Route path="/forgotpassword" element={<ForgotPassword /> }/>
           

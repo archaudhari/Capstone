@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom';
 import FaceIcon from '@mui/icons-material/Face';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import './Register.css';
@@ -7,7 +6,7 @@ import {register} from '../../actions/userAction'
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import {useDispatch} from 'react-redux'
 
-const Register = () => {
+const Register = ({handleChange}) => {
   const dispatch=useDispatch();
     const [user,setUser]=useState({
       name:"",
@@ -97,7 +96,7 @@ const Register = () => {
                 </div>
                 
                 <input type="submit" value="Register" className="customerBtn" />
-                <Link to='login'>Already register? Login here</Link>
+                <p onClick={()=>handleChange('event',0)}>Already register? Login here</p>
               </form>
             </div>
         </>

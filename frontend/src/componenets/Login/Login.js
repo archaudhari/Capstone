@@ -1,18 +1,20 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import './Login.css'
-import {useDispatch} from 'react-redux'
-import {login} from '../../actions/userAction'
-// import {useAlert} from "react-alert"
+import {useDispatch,useSelector} from 'react-redux'
+import {login,clearErrors} from '../../actions/userAction'
+import {useAlert} from "react-alert"
 
 
-const Login = () => {
+const Login = ({handleChange,handleClose}) => {
 
   const dispatch=useDispatch();
-  // const alert=useAlert();
-  // const {error}=useSelector(state=>state.user)
+  const alert=useAlert();
+  const { error, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
   const [loginEmail,setLoginEmail] = useState("")
   const [loginPassword,setLoginPassword] = useState("")
 
@@ -21,12 +23,17 @@ const Login = () => {
        dispatch(login(loginEmail,loginPassword))
      }
 
-    //  useEffect(() => {
-    //    if(error){
-    //      alert.error(error)
-    //      dispatch(clearErrors())
-    //    }
-    //  }, [dispatch,error,alert])
+     useEffect(() => {
+       if(error){
+         alert.error(error)
+         dispatch(clearErrors())
+       }
+       if (isAuthenticated) {
+        alert.success("Login successful")
+        handleClose()
+      }
+    }, [error,alert, isAuthenticated, dispatch,handleClose]);
+     
      
   return (
     <>
@@ -54,7 +61,7 @@ const Login = () => {
                 </div>
                 <Link to='password/forgot'>Forget Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
-                <Link to='/register'> new user?Register here</Link>
+                <p onClick={()=>handleChange('event',1)}> new user?Register here</p>
               </form>
             </div>
         </>

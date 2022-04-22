@@ -32,11 +32,12 @@ export const NavTitle = styled.div`
 
 export const SearchContainer = styled.div`
     background-color : #b8b8d1;
-    width: 55%;
+    width: 43%;
     height:35px;
     border-radius: 10px;
     display: flex;
     margin-left: 10px;
+    margin-right: 50px;
     align-items: center;
 
     > .MuiSvgIcon-root {

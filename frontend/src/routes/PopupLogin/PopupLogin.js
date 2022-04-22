@@ -102,10 +102,10 @@ const PopupLogin = ({ open, setOpen }) => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Login />
+        <Login handleChange={handleChange} handleClose={handleClose}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Register />
+        <Register handleChange={handleChange} />
       </TabPanel>
     </Box>
         </Box>

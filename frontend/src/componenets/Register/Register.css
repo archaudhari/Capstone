@@ -338,15 +338,16 @@
   color: rgba(0, 0, 0, 0.623);
 }
 
-.customerForm > a {
+.customerForm > p {
   color: rgba(0, 0, 0, 0.651);
   text-decoration: none;
-  align-self: flex-end;
+  cursor: pointer;
+  align-self: flex-center;
   transition: all 0.5s;
   font: 500 0.8vmax "Gill Sans";
 }
 
-.sellerForm > a:hover {
+.customerForm > p:hover {
   color: black;
 }
 

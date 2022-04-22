@@ -53,6 +53,11 @@ const Header = () => {
             {/* Div for Custom styling of Routus */}
             <Navtags>Cart</Navtags>
           </StyledLink>
+
+          <StyledLink to="/account">
+            {/* Div for Custom styling of Routus */}
+            <Navtags>Profile</Navtags>
+          </StyledLink>
         
           
           {/* Link from React Router Dom */}
