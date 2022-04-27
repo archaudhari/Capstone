@@ -15,6 +15,7 @@ import {
   } from "@material-ui/core";
 import './ProductDetails.css'
 import { Rating } from "@material-ui/lab";
+import {addItemsToCart} from '../../actions/cartAction'
 
 
 const ProductDetails = () => {
@@ -22,6 +23,12 @@ const ProductDetails = () => {
     const dispatch=useDispatch()
     const alert= useAlert()
     const {product,error} = useSelector((state)=>state.productDetails)
+
+    const addToCartHandler = () => {
+      dispatch(addItemsToCart(id));
+      alert.success("Item Added To Cart");
+    };
+
     useEffect(() => {
         
         if(error){
@@ -77,7 +84,7 @@ const ProductDetails = () => {
                   </div>
                   <button
                     disabled={product.Stock < 1 ? true : false}
-                    // onClick={addToCartHandler}
+                    onClick={addToCartHandler}
                   >
                     Add to Cart
                   </button>

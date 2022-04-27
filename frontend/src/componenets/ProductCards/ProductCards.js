@@ -2,10 +2,24 @@ import React from 'react';
 import { StyledLink } from '../../GlobalStyle';
 import { ProductCard, ShopTwoItems, ExploreShopBtn } from './ProductCardStyles';
 import ReactStars from 'react-rating-stars-component';
+import { useAlert } from 'react-alert';
+import { useParams } from 'react-router-dom'
+import {addItemsToCart} from '../../actions/cartAction'
+import { useDispatch } from 'react-redux';
 
 
 
 const ProductCards = ({product}) => {
+
+  const alert= useAlert()
+  const dispatch =useDispatch()
+  
+  const {id}=useParams()
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id));
+    alert.success("Item Added To Cart");
+  };
+
   const options = {
     edit:true,
     color: "rgba(20,20,20,0.1)",
@@ -15,7 +29,7 @@ const ProductCards = ({product}) => {
     innerHeight:50
   }
   return (
-      <StyledLink to={product._id}>
+      <StyledLink to={`/product/${product._id}`}>
         <ProductCard>  
           <img src={product.images[0].url} alt={product.name} />
           <h4>{product.name}</h4>
@@ -25,7 +39,7 @@ const ProductCards = ({product}) => {
           ({product.numOfReviews} Reviews)</span>
             </ShopTwoItems>
             <ShopTwoItems>
-              <ExploreShopBtn>Add to Cart</ExploreShopBtn>
+              <ExploreShopBtn onClick={addToCartHandler}>Add to Cart</ExploreShopBtn>
               <ExploreShopBtn>Buy Now</ExploreShopBtn>
             </ShopTwoItems>
         </ProductCard>

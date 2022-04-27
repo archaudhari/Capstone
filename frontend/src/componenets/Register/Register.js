@@ -8,41 +8,47 @@ import {useDispatch} from 'react-redux'
 
 const Register = ({handleChange}) => {
   const dispatch=useDispatch();
-    const [user,setUser]=useState({
+    const [userData,setUserData]=useState({
       name:"",
       email:"",
       password:""
     })
-    const {name,email,password}=user;
+    const {name,email,password}=userData;
     
-    const [avatar,setAvatar]=useState();
+    const [avatar,setAvatar]=useState("/Profile.png");
     const [avatarPreview,setAvatarPreview]=useState("/Profile.png")
+
+    
+  const registerDataChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setUserData({ ...userData, [e.target.name]: e.target.value });
+    }
+  };
+
 
     const registerSubmit=(e)=>{
       e.preventDefault();
-      const myForm=new FormData();
+        
+        const myForm = new FormData();
   
-      myForm.set("name",name)
-      myForm.set("email",email)
-      myForm.set("password",password)
-      myForm.set("avatar",avatar)
-      dispatch(register({name,email,password}))
+        myForm.set("name", name);  
+        myForm.set("email", email);
+        myForm.set("password", password);
+        myForm.set("avatar", avatar);
+        dispatch(register(myForm));
       };
 
-    const registerDataChange=(e)=>{
-      if(e.target.name === "avatar"){
-        const reader = new FileReader();
-        reader.onload=()=>{
-          if (reader.readyState===2){
-            setAvatarPreview(reader.result)
-            setAvatar(reader.result)
-          }
-        }
-        reader.readAsDataURL(e.target.files[0]);
-      }else{
-        setUser({...user,[e.target.name]:e.target.value})
-      }
-    }  
     
   return (
     <>
