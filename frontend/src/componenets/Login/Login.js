@@ -8,13 +8,14 @@ import {login,clearErrors} from '../../actions/userAction'
 import {useAlert} from "react-alert"
 
 
-const Login = ({handleChange,handleClose}) => {
+const Login = ({handleChange }) => {
 
   const dispatch=useDispatch();
   const alert=useAlert();
-  const { error, isAuthenticated } = useSelector(
+  const { error } = useSelector(
     (state) => state.user
   );
+  
   const [loginEmail,setLoginEmail] = useState("")
   const [loginPassword,setLoginPassword] = useState("")
 
@@ -28,11 +29,7 @@ const Login = ({handleChange,handleClose}) => {
          alert.error(error)
          dispatch(clearErrors())
        }
-       if (isAuthenticated) {
-        alert.success("Login successful")
-        handleClose()
-      }
-    }, [error,alert, isAuthenticated, dispatch,handleClose]);
+    }, [error,alert, dispatch ]);
      
      
   return (

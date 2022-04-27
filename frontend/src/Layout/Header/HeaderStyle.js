@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { CommonBtn } from '../../GlobalStyle';
+import { CommonBtn, StyledLink } from '../../GlobalStyle';
 import SearchIcon from '@mui/icons-material/Search';
-
 
 export const NavbarContainer = styled.nav`
     background-color: #5b5f97;
@@ -32,12 +31,11 @@ export const NavTitle = styled.div`
 
 export const SearchContainer = styled.div`
     background-color : #b8b8d1;
-    width: 43%;
+    width: 55%;
     height:35px;
     border-radius: 10px;
     display: flex;
     margin-left: 10px;
-    margin-right: 50px;
     align-items: center;
 
     > .MuiSvgIcon-root {
@@ -132,4 +130,24 @@ export const PopUpLogin = styled(CommonBtn)`
     background-color :#f23737 ;
     padding:3px 18px;
     }
+`;
+
+export const DropdownMenu = styled.div`
+    background-color: #8fce00;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;
+
+export const DropdownLink = styled(StyledLink)`
+    color: #000;
+`;
+
+export const LogoutBtn = styled.button`
+    width:100%;
+    height:40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #e06666;
+    color:#fff;
+    border-width: 0;
 `;

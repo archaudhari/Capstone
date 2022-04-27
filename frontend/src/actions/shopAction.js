@@ -12,7 +12,7 @@ export const getShop = () => async (dispatch) => {
              type :ALL_SHOP_REQUEST
         });
 
-        const { data } = await axios.get("/api/v1/shops");
+        const { data } = await axios.get("http://localhost:4000/api/v1/shops");
 
         dispatch({
             type: ALL_SHOP_SUCCESS,

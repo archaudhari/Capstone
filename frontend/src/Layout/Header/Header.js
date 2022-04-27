@@ -1,15 +1,75 @@
 import React, { useState }  from 'react';
 import { StyledLink } from '../../GlobalStyle';
-import { NavbarContainer, NavTitle, SearchContainer, SearchBar, Search, NavLinks, Navtags, FilterBar, FilterLink, PopUpLogin } from './HeaderStyle';
+import { NavbarContainer, NavTitle, SearchContainer, SearchBar, Search, NavLinks, Navtags, FilterBar, FilterLink, PopUpLogin , DropdownLink, LogoutBtn, DropdownMenu } from './HeaderStyle';
 import Login from '../../routes/PopupLogin/PopupLogin';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../actions/userAction';
 
 const Header = () => {
   
-  
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleOpen = () => setOpen(true);
+  const { user } = useSelector(state => state.user)
+
+  const [open, setOpen] = useState(false);
   
+  const handleOpen = () => setOpen(true)
+
+  // useEffect(() => {
+  //   if(isAuthenticated) {
+  //     switch(user.role) {
+  //       case 'admin':
+  //         navigate('/admin/dashboard')
+  //           break;
+  //       case 'seller':
+  //         navigate('/seller/dashboard')
+  //           break;
+  //       case 'customer':
+  //         navigate('') 
+  //           break;  
+  //       default:
+  //          alert("error")
+  //     }
+  //   }
+  // }, [isAuthenticated, user, navigate])
+  
+
+  console.log(user) 
+  const logoutUser = () => {
+    dispatch(logout());
+  }
+
+const Roles = () => {
+  if(user){
+    switch(user.role) {
+      case 'admin':
+        return (
+          <StyledLink to="/admin/dashboard">
+            <Navtags>Dashboard</Navtags>
+          </StyledLink>
+          )
+      case 'seller':
+        return (
+          <StyledLink to="/seller/dashboard">
+            <Navtags>Dashboard</Navtags>
+          </StyledLink>
+        )
+      case 'customer':
+        return (
+          <StyledLink to="/">
+            <Navtags>Home</Navtags>
+          </StyledLink>
+        )
+      default:
+        return 'hello'
+    }
+  } else {
+    return (
+      <StyledLink to="/">
+        <Navtags>Home</Navtags>
+      </StyledLink>)
+  }
+}
   return (
     <>
       <NavbarContainer>
@@ -29,22 +89,18 @@ const Header = () => {
 
         <NavLinks>
 
-          {/* Link from React Router Dom */}
-          <StyledLink to="/">
-            {/* Div for Custom styling of Routus */}
-            <Navtags>Home</Navtags>
-          </StyledLink>
+          <Roles />
 
           {/* Link from React Router Dom */}
-          <StyledLink to="/shop">
+          <StyledLink to="/shops">
             {/* Div for Custom styling of Routus */}
-            <Navtags>Shop</Navtags>
+            <Navtags>Shops</Navtags>
           </StyledLink>
           
           {/* Link from React Router Dom */}
-          <StyledLink to="/product">
+          <StyledLink to="/products">
             {/* Div for Custom styling of Routus */}
-            <Navtags>Product</Navtags>  
+            <Navtags>Products</Navtags>  
           </StyledLink>
         
           
@@ -53,19 +109,32 @@ const Header = () => {
             {/* Div for Custom styling of Routus */}
             <Navtags>Cart</Navtags>
           </StyledLink>
-
-          <StyledLink to="/account">
-            {/* Div for Custom styling of Routus */}
-            <Navtags>Profile</Navtags>
-          </StyledLink>
         
-          
-          {/* Link from React Router Dom */}
-          <PopUpLogin onClick={handleOpen}>
-            Login
-          </PopUpLogin>
-          <Login open={open} setOpen={setOpen} />
-
+          {
+            user ? (
+              <>
+              <DropdownMenu className="dropdown">
+                <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  {user.name}
+                </button>
+                <ul className="dropdown-menu"  style={{paddingBottom:0, borderRadius:12, textAlign: 'center'}} aria-labelledby="dropdownMenuButton1">
+                  <li style={{ fontSize: 18, borderBottom: '1px solid black', paddingBottom: 5}}><DropdownLink className='dropdown-item' to='/account'>Profile</DropdownLink></li>
+                  <li style={{ fontSize: 18, borderBottom: '1px solid black', paddingBottom: 5}}><DropdownLink className='dropdown-item' to='/orders'>Orders</DropdownLink></li>
+                  <li><LogoutBtn onClick={logoutUser} >Logout</LogoutBtn></li>
+               </ul>
+              </DropdownMenu>
+              </>
+            ) : (
+              <>
+                {/* Link from React Router Dom */}
+                <PopUpLogin onClick={handleOpen}>
+                  Login
+                </PopUpLogin>
+                <Login open={open} setOpen={setOpen} />
+              </>
+            )
+          }
+            
         </NavLinks>
       </NavbarContainer>
 

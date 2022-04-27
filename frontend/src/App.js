@@ -14,8 +14,19 @@ import Profile from './routes/Profile/Profile';
 import ForgotPassword from './componenets/ForgotPassword/ForgotPassword';
 import ProductDetails from './componenets/Product/ProductDetails';
 import ErrorPage from './routes/ErrorPage/ErrorPage';
+import { useEffect } from 'react';
+import { loadUser } from './actions/userAction';
+import store from './store';
+import Adminboard from './admin/AdminDashboard/Adminboard';
+import Sellerboard from './seller/SellerDashboard/Sellerboard';
 
 function App() {
+
+  
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, [])
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,10 +34,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             
-            <Route path="/shop" element={<Shop /> }/>
+            <Route path="/shops" element={<Shop /> }/>
 
 
-            <Route path="/product" element={<Product /> }/>
+            <Route path="/products" element={<Product /> }/>
             
 
             <Route path="/cart" element={<Cart /> }/>
@@ -35,6 +46,10 @@ function App() {
 
             <Route path="/account" element={<Profile /> }/>
             
+
+            <Route path="/admin/dashboard" element={<Adminboard /> }/>
+            
+            <Route path="/seller/dashboard" element={<Sellerboard /> }/>
 
             <Route path="/forgotpassword" element={<ForgotPassword /> }/>
 
