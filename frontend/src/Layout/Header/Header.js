@@ -54,7 +54,7 @@ const Roles = () => {
             <Navtags>Dashboard</Navtags>
           </StyledLink>
         )
-      case 'customer':
+      case 'user':
         return (
           <StyledLink to="/">
             <Navtags>Home</Navtags>

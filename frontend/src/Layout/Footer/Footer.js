@@ -19,7 +19,7 @@ const Footer = () => {
         </FooterMain>
 
         <FooterMiddle>
-            <a href="https://wa.me/9372409041?text=I'm%20interested%20in%20becoming%20a%20seller%20on%20your%20website">Become a Seller</a>
+            <a href="https://wa.me/9372409041">Become a Seller</a>
             <p>Contact Us</p>
             <p>Privacy</p>
             <p>Help</p>v
