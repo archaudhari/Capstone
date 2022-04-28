@@ -37,13 +37,13 @@ const Sidebar = () => {
               <TreeItem nodeId="2" label="Shops" icon={<PostAddIcon />} />
             </Link>
 
-            {/* <Link> */}
+            <Link to="createProduct">
               <TreeItem nodeId="3" label="Add Product" icon={<AddIcon />} />
-            {/* </Link> */}
+            </Link>
 
-            {/* <Link> */}
+            <Link to="createShop">
               <TreeItem nodeId="3" label="Add Shop" icon={<AddIcon />} />
-            {/* </Link> */}
+            </Link>
           </TreeItem>
         </TreeView>
       {/* </Link> */}

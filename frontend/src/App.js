@@ -19,6 +19,8 @@ import { loadUser } from './actions/userAction';
 import store from './store';
 import Adminboard from './admin/AdminDashboard/Adminboard';
 import Sellerboard from './seller/SellerDashboard/Sellerboard';
+import CreateShop from './seller/SellerDashboard/CreateShop';
+import NewProduct from './seller/SellerDashboard/NewProduct.js';
 
 function App() {
 
@@ -52,6 +54,10 @@ function App() {
             <Route path="/seller/dashboard" element={<Sellerboard /> }/>
 
             <Route path="/forgotpassword" element={<ForgotPassword /> }/>
+
+            <Route path="/seller/dashboard/createShop" element={<CreateShop /> }/>
+
+            <Route path="/seller/dashboard/createProduct" element={<NewProduct /> }/>
 
             
             <Route path="*" element={<ErrorPage /> }/>

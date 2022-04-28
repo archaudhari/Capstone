@@ -13,6 +13,7 @@ const Sellerboard = () => {
   const dispatch = useDispatch();
 
   const { shops } = useSelector((state) => state.shops);
+  const { products } = useSelector((state) => state.products);
 
   // const { orders } = useSelector((state) => state.allOrders);
 
@@ -80,6 +81,10 @@ const Sellerboard = () => {
             <Link to="/seller/shops">
               <p>shops</p>
               <p>{shops && shops.length}</p>
+            </Link>
+            <Link to="/seller/products">
+            <p>products</p>
+              <p>{products && products.length}</p>
             </Link>
             {/* <Link to="/admin/orders">
               <p>Orders</p>
