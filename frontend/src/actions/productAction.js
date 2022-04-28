@@ -8,6 +8,9 @@ import {
     NEW_PRODUCT_REQUEST,
     NEW_PRODUCT_SUCCESS,
     NEW_PRODUCT_FAIL,
+    ADMIN_PRODUCT_REQUEST,
+    ADMIN_PRODUCT_SUCCESS,
+    ADMIN_PRODUCT_FAIL,
     CLEAR_ERRORS
 } from '../constant/productConstant'
 import axios from 'axios'
@@ -74,6 +77,26 @@ export const getProduct =() => async (dispatch) => {
       });
     }
   };
+
+    // get all shops for admin/seller
+export const getAdminProducts = () => async(dispatch) => {
+  try {
+      dispatch({ type: ADMIN_PRODUCT_REQUEST })
+
+      const { data } = await axios.get(`http://localhost:4000/api/v1/unique/products`) ;
+
+      dispatch({
+          type: ADMIN_PRODUCT_SUCCESS,
+          payload: data.products
+      })
+  }catch(error) {
+      dispatch({
+          type: ADMIN_PRODUCT_FAIL,
+          payload : error.payload.data.message,
+      })
+  }
+}
+
 
   export const clearErrors = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });

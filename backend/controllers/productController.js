@@ -45,7 +45,7 @@ exports.getAllProducts = catchAsyncErrors ( async(req,res)=>{
     const resultPerPage = 8;
     const productCount = await Product.countDocuments();
 
-    const apiFeature = new ApiFeatures(Product.find(),req.query).search().filter().pagination(resultPerPage);
+    const apiFeature = new ApiFeatures(Product.find().populate("shopName","name city state"), req.query).search().filter().pagination(resultPerPage);
 
     const products = await apiFeature.query;
 
@@ -54,6 +54,18 @@ exports.getAllProducts = catchAsyncErrors ( async(req,res)=>{
         products
     })
 })
+
+// get all products -- admin, seller
+exports.getAdminProducts = catchAsyncErrors(async(req, res, next) => {
+
+  const products = await Product.find().populate("shopName","name")
+
+  res.status(200).json({
+      success: true,
+      products,
+  })
+});
+
 
 //get product details
 /*

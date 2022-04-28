@@ -5,11 +5,15 @@ import { ALL_SHOP_REQUEST,
     NEW_SHOP_SUCCESS,
     NEW_SHOP_FAIL,
     NEW_SHOP_RESET,
+    ADMIN_SHOP_REQUEST,
+    ADMIN_SHOP_SUCCESS,
+    ADMIN_SHOP_FAIL,
     CLEAR_ERRORS } from "../constant/shopConstant"
 
 export const shopReducer = (state = { shops : [] }, action) => {
 switch(action.type) {
-    case ALL_SHOP_REQUEST : 
+    case ALL_SHOP_REQUEST :  
+    case ADMIN_SHOP_REQUEST:
         return {
             loading: true,
             shop: []
@@ -20,7 +24,13 @@ switch(action.type) {
             shops: action.payload.shops,
             shopsCounts : action.payload.shopsCounts
         }
+        case ADMIN_SHOP_SUCCESS:
+            return {
+                loading:false,
+                shops:action.payload
+            }
     case ALL_SHOP_FAIL :
+      case ADMIN_SHOP_FAIL:
         return {
             loading:false,
             error: action.payload

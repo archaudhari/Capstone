@@ -39,6 +39,10 @@ const ProductCards = ({product}) => {
           ({product.numOfReviews} Reviews)</span>
             </ShopTwoItems>
             <ShopTwoItems>
+            <p>City : <span>{product.shopName.city}</span></p>
+            <p>State: <span>{product.shopName.state}</span></p>
+            </ShopTwoItems>
+            <ShopTwoItems>
               <ExploreShopBtn onClick={addToCartHandler}>Add to Cart</ExploreShopBtn>
               <ExploreShopBtn>Buy Now</ExploreShopBtn>
             </ShopTwoItems>

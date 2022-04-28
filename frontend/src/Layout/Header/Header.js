@@ -1,6 +1,6 @@
 import React, { useState }  from 'react';
 import { StyledLink } from '../../GlobalStyle';
-import { NavbarContainer, NavTitle, SearchContainer, SearchBar, Search, NavLinks, Navtags, FilterBar, FilterLink, PopUpLogin , DropdownLink, LogoutBtn, DropdownMenu } from './HeaderStyle';
+import { NavbarContainer, NavTitle, SearchContainer, SearchBar, Search, NavLinks, Navtags, PopUpLogin , DropdownLink, LogoutBtn, DropdownMenu } from './HeaderStyle';
 import Login from '../../routes/PopupLogin/PopupLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
@@ -138,32 +138,6 @@ const Roles = () => {
         </NavLinks>
       </NavbarContainer>
 
-      <FilterBar>
-        <StyledLink to="/electronics">
-          <FilterLink>
-            Electronics  
-          </FilterLink>
-        </StyledLink>
-
-        <StyledLink to="/clothing">
-          <FilterLink>
-              Clothing
-          </FilterLink>
-        </StyledLink>
-
-
-        <StyledLink to="/groceries">
-          <FilterLink>
-            Groceries
-          </FilterLink>
-        </StyledLink>
-
-        <StyledLink to="/medicals">
-          <FilterLink>
-            Medicals
-          </FilterLink>
-        </StyledLink>
-      </FilterBar>
     </>
 
     

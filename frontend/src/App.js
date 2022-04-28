@@ -17,10 +17,13 @@ import ErrorPage from './routes/ErrorPage/ErrorPage';
 import { useEffect } from 'react';
 import { loadUser } from './actions/userAction';
 import store from './store';
-import Adminboard from './admin/AdminDashboard/Adminboard';
 import Sellerboard from './seller/SellerDashboard/Sellerboard';
 import CreateShop from './seller/SellerDashboard/CreateShop';
 import NewProduct from './seller/SellerDashboard/NewProduct.js';
+import Adminboard from './admin/Dashboard/Adminboard';
+import AdminShops from './admin/Shops/AdminShop';
+import AdminProducts from './admin/Products/AdminProduct';
+import AdminUsers from './admin/Users/AdminUser';
 
 function App() {
 
@@ -49,7 +52,13 @@ function App() {
             <Route path="/account" element={<Profile /> }/>
             
 
-            <Route path="/admin/dashboard" element={<Adminboard /> }/>
+            <Route path="/admin/dashboard" element={<Adminboard /> }/> 
+            
+            <Route path='/admin/shops' element={<AdminShops /> } />
+
+            <Route path="/admin/products" element={<AdminProducts /> }/>
+
+            <Route path="/admin/users" element={<AdminUsers /> }/>
             
             <Route path="/seller/dashboard" element={<Sellerboard /> }/>
 
