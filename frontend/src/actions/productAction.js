@@ -5,6 +5,9 @@ import {
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
+    NEW_PRODUCT_REQUEST,
+    NEW_PRODUCT_SUCCESS,
+    NEW_PRODUCT_FAIL,
     CLEAR_ERRORS
 } from '../constant/productConstant'
 import axios from 'axios'
@@ -22,6 +25,32 @@ export const getProduct =() => async (dispatch) => {
     } catch (error) {
       dispatch({
         type: ALL_PRODUCT_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+  export const createProduct = (productData) => async (dispatch) => {
+    try {
+      dispatch({ type: NEW_PRODUCT_REQUEST });
+  
+      const config = {
+        headers: { "Content-Type": "application/json" },
+      };
+  
+      const { data } = await axios.post(
+        `http://localhost:4000/api/v1/unique/products/new`,
+        productData,
+        config
+      );
+  
+      dispatch({
+        type: NEW_PRODUCT_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: NEW_PRODUCT_FAIL,
         payload: error.response.data.message,
       });
     }
