@@ -20,12 +20,10 @@ let initialState={
     cart: {
         cartItems: localStorage.getItem("cartItems")
           ? JSON.parse(localStorage.getItem("cartItems"))
-          : []
-    },
-    user: {
-        userData: localStorage.getItem("userToken")
-          ? JSON.parse(localStorage.getItem("userToken"))
-          : []
+          : [],
+          shippingInfo: localStorage.getItem("shippingInfo")
+        ? JSON.parse(localStorage.getItem("shippingInfo"))
+        : {},
     },
 };
 const middleware=[thunk];

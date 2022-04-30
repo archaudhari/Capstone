@@ -24,6 +24,8 @@ import Adminboard from './admin/Dashboard/Adminboard';
 import AdminShops from './admin/Shops/AdminShop';
 import AdminProducts from './admin/Products/AdminProduct';
 import AdminUsers from './admin/Users/AdminUser';
+import Shipping from './routes/Cart/Shipping';
+import ConfirmOrder from './routes/Cart/ConfirmOrder'
 
 function App() {
 
@@ -50,8 +52,13 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails /> }/>
 
             <Route path="/account" element={<Profile /> }/>
-            
 
+            <Route path="/shipping" element={<Shipping />} />
+            
+            <Route path="/order/confirm" element={<ConfirmOrder />} />
+
+            <Route path="/shipping" element={<Shipping />} />
+            
             <Route path="/admin/dashboard" element={<Adminboard /> }/> 
             
             <Route path='/admin/shops' element={<AdminShops /> } />

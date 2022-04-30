@@ -17,7 +17,7 @@ const options = {
   return (
     <ShoppingCard >  
       <ShopLink to={shop._id}>
-        <img src={shop.images[0].url} alt='shop-name'/>
+        <img src={""} alt='shop-name'/>
       </ShopLink>
       <ShopLink to={shop._id}>
         <h4>{shop.name}</h4>

@@ -3,15 +3,24 @@ import "./Cart.css";
 import CartItemCard from "./CartItemCard";
 import Typography from '@mui/material/Typography';
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
-import { Link } from "react-router-dom";
-// import { products } from '../../constant/data';
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import { addItemsToCart,removeItemsFromCart } from "../../actions/cartAction";
+// import Login from '../../routes/PopupLogin/PopupLogin';
 
 
 const Cart = () => {
+  const navigate=useNavigate()
   const dispatch=useDispatch()
   const { cartItems } = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.user);
+  // useEffect(() => {
+  //   if (isAuthenticated === false) {
+  //     return (
+  //       <Login/>
+  //     ) 
+  //   }
+  // }, [ isAuthenticated]);
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -33,10 +42,15 @@ const Cart = () => {
     dispatch(removeItemsFromCart(id));
   };
 
+  const checkoutHandler = () => {
+    navigate("/shipping");
+  };
+
 
   return (
-    <Fragment>
-       {cartItems.length === 0 ?<div className="emptyCart">
+    <fragment>
+    {isAuthenticated ?<Fragment>
+      {cartItems.length === 0 ?<div className="emptyCart">
           <RemoveShoppingCartIcon />
 
           <Typography>No Product in Your Cart</Typography>
@@ -91,13 +105,14 @@ const Cart = () => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button >Check Out</button>
+                <button onClick={checkoutHandler}>Check Out</button>
               </div>
             </div>
           </div>
          }
-        </Fragment>}
-    </Fragment>
+        </Fragment>} 
+      </Fragment> : <div>login to access cartPage</div>}
+    </fragment>
   );
 };
 

@@ -31,17 +31,17 @@ const ProductCards = ({product}) => {
   return (
       <StyledLink to={`/product/${product._id}`}>
         <ProductCard>  
-          <img src={product.images[0].url} alt={product.name} />
+          <img src="" alt={product.name} />
           <h4>{product.name}</h4>
             <h5><span>₹</span>{product.price}</h5>
             <ShopTwoItems>
               <ReactStars {...options}/> <span>{" "}
           ({product.numOfReviews} Reviews)</span>
             </ShopTwoItems>
-            <ShopTwoItems>
+            {/* <ShopTwoItems>
             <p>City : <span>{product.shopName.city}</span></p>
             <p>State: <span>{product.shopName.state}</span></p>
-            </ShopTwoItems>
+            </ShopTwoItems> */}
             <ShopTwoItems>
               <ExploreShopBtn onClick={addToCartHandler}>Add to Cart</ExploreShopBtn>
               <ExploreShopBtn>Buy Now</ExploreShopBtn>
