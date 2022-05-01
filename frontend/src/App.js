@@ -1,9 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter, Routes, Route  } from 'react-router-dom';
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-multi-carousel/lib/styles.css";
+import { BrowserRouter, Routes, Route  } from 'react-router-dom';
+import "slick-carousel/slick/slick.css";
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { loadUser } from './actions/userAction';
+import store from './store';
+
 import Header from './Layout/Header/Header';
 import Shop from './routes/Shop/Shop';
 import Footer from './Layout/Footer/Footer';
@@ -13,22 +18,25 @@ import Cart from './routes/Cart/Cart';
 import Profile from './routes/Profile/Profile';
 import ForgotPassword from './componenets/ForgotPassword/ForgotPassword';
 import ProductDetails from './componenets/Product/ProductDetails';
+import Shipping from './routes/Cart/Shipping';
+import ConfirmOrder from './routes/Cart/ConfirmOrder'
 import ErrorPage from './routes/ErrorPage/ErrorPage';
-import { useEffect } from 'react';
-import { loadUser } from './actions/userAction';
-import store from './store';
-import Sellerboard from './seller/SellerDashboard/Sellerboard';
-import CreateShop from './seller/SellerDashboard/CreateShop';
-import NewProduct from './seller/SellerDashboard/NewProduct.js';
+import ShopDetails from './routes/ShopDetails/ShopDetails';
+
+
+import Sellerboard from './seller/Dashboard/Sellerboard';
+import ShopNew from './seller/Shops/New/ShopNew';
+import ShopAll from './seller/Shops/All/ShopAll';
+
 import Adminboard from './admin/Dashboard/Adminboard';
 import AdminShops from './admin/Shops/AdminShop';
 import AdminProducts from './admin/Products/AdminProduct';
 import AdminUsers from './admin/Users/AdminUser';
-import Shipping from './routes/Cart/Shipping';
-import ConfirmOrder from './routes/Cart/ConfirmOrder'
+
 
 function App() {
 
+  const { user } = useSelector(state => state.user)
   
   useEffect(() => {
     store.dispatch(loadUser());
@@ -42,41 +50,52 @@ function App() {
             <Route path="/" element={<Home />}/>
             
             <Route path="/shops" element={<Shop /> }/>
-
+            
+            <Route path="/shop/:id" element={<ShopDetails /> }/>
 
             <Route path="/products" element={<Product /> }/>
-            
-
-            <Route path="/cart" element={<Cart /> }/>
+          
+            <Route path="/cart" element={<Cart user={user} /> }/>
 
             <Route path="/product/:id" element={<ProductDetails /> }/>
 
-            <Route path="/account" element={<Profile /> }/>
-
-            <Route path="/shipping" element={<Shipping />} />
-            
-            <Route path="/order/confirm" element={<ConfirmOrder />} />
-
-            <Route path="/shipping" element={<Shipping />} />
-            
-            <Route path="/admin/dashboard" element={<Adminboard /> }/> 
-            
-            <Route path='/admin/shops' element={<AdminShops /> } />
-
-            <Route path="/admin/products" element={<AdminProducts /> }/>
-
-            <Route path="/admin/users" element={<AdminUsers /> }/>
-            
-            <Route path="/seller/dashboard" element={<Sellerboard /> }/>
-
             <Route path="/forgotpassword" element={<ForgotPassword /> }/>
-
-            <Route path="/seller/dashboard/createShop" element={<CreateShop /> }/>
-
-            <Route path="/seller/dashboard/createProduct" element={<NewProduct /> }/>
-
             
             <Route path="*" element={<ErrorPage /> }/>
+
+
+            { user ? (
+              <>
+                <Route path="/account" element={<Profile /> }/>
+
+                <Route path="/shipping" element={<Shipping />} />
+
+                <Route path="/order/confirm" element={<ConfirmOrder />} />
+
+                <Route path="/shipping" element={<Shipping />} />
+
+                <Route path="/profile" element={<Profile /> }/>
+            
+                <Route path="/seller/dashboard" element={<Sellerboard /> }/>
+        
+                <Route path="/seller/shop/new" element={<ShopNew /> }/>
+
+                <Route path="seller/shops" element={<ShopAll />} />
+
+        
+                <Route path="/admin/dashboard" element={<Adminboard /> }/>
+        
+                <Route path='/admin/shops' element={<AdminShops /> } />
+
+                <Route path="/admin/products" element={<AdminProducts /> }/>
+
+                <Route path="/admin/users" element={<AdminUsers /> }/>
+              </>
+            ) : (
+              <></>
+            )}
+
+            
 
           </Routes>
           <Footer />

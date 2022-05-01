@@ -4,11 +4,12 @@ import { NavbarContainer, NavTitle, SearchContainer, SearchBar, Search, NavLinks
 import Login from '../../routes/PopupLogin/PopupLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { user } = useSelector(state => state.user)
 
   const [open, setOpen] = useState(false);
@@ -37,6 +38,7 @@ const Header = () => {
   console.log(user) 
   const logoutUser = () => {
     dispatch(logout());
+    navigate('/')
   }
 
 const Roles = () => {

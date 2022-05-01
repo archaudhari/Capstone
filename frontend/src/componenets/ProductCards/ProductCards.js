@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyledLink } from '../../GlobalStyle';
-import { ProductCard, ShopTwoItems, ExploreShopBtn } from './ProductCardStyles';
+import { ProductCard, ShopTwoItems, ExploreShopBtn, ProductLink} from './ProductCardStyles';
 import ReactStars from 'react-rating-stars-component';
 import { useAlert } from 'react-alert';
 import { useParams } from 'react-router-dom'
@@ -29,25 +28,33 @@ const ProductCards = ({product}) => {
     innerHeight:50
   }
   return (
-      <StyledLink to={`/product/${product._id}`}>
-        <ProductCard>  
-          <img src="" alt={product.name} />
-          <h4>{product.name}</h4>
-            <h5><span>₹</span>{product.price}</h5>
-            <ShopTwoItems>
-              <ReactStars {...options}/> <span>{" "}
-          ({product.numOfReviews} Reviews)</span>
-            </ShopTwoItems>
-            {/* <ShopTwoItems>
-            <p>City : <span>{product.shopName.city}</span></p>
-            <p>State: <span>{product.shopName.state}</span></p>
-            </ShopTwoItems> */}
-            <ShopTwoItems>
-              <ExploreShopBtn onClick={addToCartHandler}>Add to Cart</ExploreShopBtn>
-              <ExploreShopBtn>Buy Now</ExploreShopBtn>
-            </ShopTwoItems>
-        </ProductCard>
-      </StyledLink>
+    <ProductCard>  
+    <ProductLink to={`/product/${product?._id}`}>
+        <img src={product?.images?.[0]?.url} alt={product?.name} />
+    </ProductLink>
+    <ProductLink to={`/product/${product?._id}`}>
+        <h4>{product?.name}</h4>
+    </ProductLink>
+    <ProductLink to={`/product/${product?._id}`}>
+          <h5><span>₹</span>{product?.price}</h5>
+    </ProductLink>
+    <ProductLink to={`/product/${product?._id}`}>
+      <ShopTwoItems>
+        <ReactStars {...options}/> <span>{" "}
+              ({product?.numOfReviews} Reviews)</span>
+      </ShopTwoItems>
+    </ProductLink>
+    <ProductLink to={`/product/${product?._id}`}>
+      <ShopTwoItems>
+        <p>City : <span>{product?.shopName?.city}</span></p>
+        <p>State: <span>{product?.shopName?.state}</span></p>
+      </ShopTwoItems>
+    </ProductLink>
+    <ShopTwoItems>
+      <ExploreShopBtn bgcolor='#3d85c6' onClick={addToCartHandler} >Add to Cart</ExploreShopBtn>
+      <ExploreShopBtn>Buy Now</ExploreShopBtn>
+    </ShopTwoItems>
+  </ProductCard>
   )
 }
 

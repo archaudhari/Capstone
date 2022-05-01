@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {useSelector, useDispatch } from "react-redux";
-import {  getAdminShops } from '../../../actions/shopAction';
+import { getSellerShops } from '../../../actions/shopAction';
 import { useAlert } from 'react-alert';
 import { TableContainer, EditBtn, DeleteBtn } from '../DataListStyle';
 import Loader from '../../../Layout/Loader/Loader';
@@ -16,7 +16,7 @@ const DataListShop = () => {
         if(error) {
           return alert.error(error);
         }
-        dispatch(getAdminShops());
+        dispatch(getSellerShops());
       }, [dispatch, error, alert])
 
   return (

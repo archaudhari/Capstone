@@ -66,6 +66,18 @@ exports.getAdminShops = catchAsyncErrors (async (req, res, next) => {
   });
 
 
+  // get shop details seller --- seller
+exports.getShopSeller = catchAsyncErrors (async (req, res, next) => {
+
+  const user = req.user.id
+  
+  const shops = await Shop.find({ user })
+
+  res.status(200).json({
+      success: true,
+      shops
+  })
+});
 //get shop details
 
 // exports.getShopDetails = async(req,res,next)=>{

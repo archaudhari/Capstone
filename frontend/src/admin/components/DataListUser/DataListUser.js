@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
-import {useSelector, useDispatch } from "react-redux";
+import React from 'react'
+import {useSelector } from "react-redux";
 import { TableContainer, EditBtn, DeleteBtn } from '../DataListStyle';
 
 const DataListUser = () => {
-    const dispatch = useDispatch();
 
     const {  users } = useSelector((state) => state.users)
 

@@ -1,7 +1,11 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import "./Cart.css";
 import CartItemCard from "./CartItemCard";
 import Typography from '@mui/material/Typography';
+import { MainContainer } from '../../GlobalStyle';
+import styled from "styled-components";
+import { CommonBtn } from "../../GlobalStyle";
+import Login from '../../routes/PopupLogin/PopupLogin';
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
@@ -9,11 +13,14 @@ import { addItemsToCart,removeItemsFromCart } from "../../actions/cartAction";
 // import Login from '../../routes/PopupLogin/PopupLogin';
 
 
-const Cart = () => {
+const Cart = ({ user }) => {
   const navigate=useNavigate()
   const dispatch=useDispatch()
   const { cartItems } = useSelector((state) => state.cart);
-  const { isAuthenticated } = useSelector((state) => state.user);
+
+  const [open, setOpen] = useState(false);
+  
+  const handleOpen = () => setOpen(true)
   // useEffect(() => {
   //   if (isAuthenticated === false) {
   //     return (
@@ -49,7 +56,7 @@ const Cart = () => {
 
   return (
     <fragment>
-    {isAuthenticated ?<Fragment>
+    {user ?<Fragment>
       {cartItems.length === 0 ?<div className="emptyCart">
           <RemoveShoppingCartIcon />
 
@@ -111,9 +118,38 @@ const Cart = () => {
           </div>
          }
         </Fragment>} 
-      </Fragment> : <div>login to access cartPage</div>}
+      </Fragment> : (
+        <>
+          
+          <MainContainer>
+          <h4>No Item Found</h4>
+            <DefaultContainer onClick={handleOpen}>
+                Please Login to Access this Page
+            </DefaultContainer>
+          <Login open={open} setOpen={setOpen} />
+          </MainContainer>
+        </>
+      ) 
+    } 
     </fragment>
   );
 };
+
+const DefaultContainer = styled(CommonBtn)`
+    && {
+        color: #fff;
+        font-size:20px;
+        margin-left:0px;
+        text-transform: capitalize;
+        padding:5px 15px;
+        background-color: #6a329f;
+        border-radius: 30px;
+        height:45px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    &&:hover {
+        background-color:#6a329f;
+    }`;
 
 export default Cart;

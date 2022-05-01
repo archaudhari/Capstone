@@ -1,5 +1,5 @@
 const express =require("express");
-const { getAllShops, createShop, updateShop, deleteShop,getAdminShops, getShopDetails, createShopReview, getShopReviews, deleteReview } = require("../controllers/shopController");
+const { getAllShops, createShop, updateShop, deleteShop,getAdminShops, getShopDetails, createShopReview, getShopReviews, deleteReview, getShopSeller } = require("../controllers/shopController");
 const { isAuthenticatedUser,authorizeRoles } = require("../middleware/auth");
 const router = express.Router();
 
@@ -16,6 +16,10 @@ router.route("/unique/shop/:id")
 router
   .route("/unique/shops")
   .get(isAuthenticatedUser, authorizeRoles("admin", "seller"), getAdminShops);
+
+  
+// get seller shop 
+router.route("/seller/shops").get(isAuthenticatedUser, authorizeRoles("seller"), getShopSeller);
 
 // create new shop seller/admin
 router.route("/unique/shop/:id")

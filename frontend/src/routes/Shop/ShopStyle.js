@@ -16,8 +16,9 @@ export const ShopFilterMenu = styled.div`
 
 export const FilterLink = styled.div`
     font-size: 24px;
-    color: #fff;
+    color:  ${props => props.fontColor || '#fff' };
     font-weight: 500;
+    text-decoration: ${props => props.underline || 'initial' };
     letter-spacing: 1px;
 
     :hover {

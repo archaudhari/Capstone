@@ -63,7 +63,7 @@ export const login = (email, password) => async (dispatch) => {
       dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message });
     }
   };
-  
+
 
 export const logout = () => async (dispatch) => {
   try {
