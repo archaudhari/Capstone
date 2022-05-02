@@ -57,7 +57,7 @@ function App() {
           
             <Route path="/cart" element={<Cart user={user} /> }/>
 
-            <Route path="/product/:id" element={<ProductDetails /> }/>
+            <Route path="/product/:id" element={<ProductDetails user={user} /> }/>
 
             <Route path="/forgotpassword" element={<ForgotPassword /> }/>
             

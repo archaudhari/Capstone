@@ -1,23 +1,25 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { ProductCard, ShopTwoItems, ExploreShopBtn, ProductLink} from './ProductCardStyles';
 import ReactStars from 'react-rating-stars-component';
 import { useAlert } from 'react-alert';
-import { useParams } from 'react-router-dom'
 import {addItemsToCart} from '../../actions/cartAction'
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector} from 'react-redux';
 
 
 
 const ProductCards = ({product}) => {
-
   const alert= useAlert()
   const dispatch =useDispatch()
-  
-  const {id}=useParams()
+  const { user } = useSelector((state) => state.user);
+  const [quantity, setQuantity] = useState(1);
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id));
+    setQuantity(quantity)
+    dispatch(addItemsToCart(product._id,quantity));
     alert.success("Item Added To Cart");
   };
+  const alertLogin=()=>{
+    alert.error("login to add product")
+  }
 
   const options = {
     edit:true,
@@ -51,7 +53,7 @@ const ProductCards = ({product}) => {
       </ShopTwoItems>
     </ProductLink>
     <ShopTwoItems>
-      <ExploreShopBtn bgcolor='#3d85c6' onClick={addToCartHandler} >Add to Cart</ExploreShopBtn>
+      <ExploreShopBtn bgcolor='#3d85c6' onClick={user ? addToCartHandler : alertLogin} >Add to Cart</ExploreShopBtn>
       <ExploreShopBtn>Buy Now</ExploreShopBtn>
     </ShopTwoItems>
   </ProductCard>

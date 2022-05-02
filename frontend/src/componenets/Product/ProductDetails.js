@@ -22,7 +22,7 @@ import { Rating } from "@material-ui/lab";
 import {useParams} from 'react-router-dom'
 
 
-const ProductDetails = () => {
+const ProductDetails = ({user}) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const {id} =useParams()
@@ -66,6 +66,10 @@ const ProductDetails = () => {
     alert.success("Item Added To Cart");
   };
 
+  const alertLogin = () => {
+    alert.error("Login to add product");
+  };
+
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };
@@ -97,8 +101,8 @@ const ProductDetails = () => {
     //   alert.success("Review Submitted Successfully");
     //   dispatch({ type: NEW_REVIEW_RESET });
     // }
-    dispatch(getProductDetails(id));
-  }, [dispatch, id, error, alert]);
+    dispatch(getProductDetails(id,quantity));
+  }, [dispatch, id,quantity, error, alert]);
 
   return (
     <Fragment>
@@ -144,7 +148,7 @@ const ProductDetails = () => {
                   </div>
                   <button
                     disabled={product.Stock < 1 ? true : false}
-                    onClick={addToCartHandler}
+                    onClick={user ? addToCartHandler : alertLogin }
                   >
                     Add to Cart
                   </button>
