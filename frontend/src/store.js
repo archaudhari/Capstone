@@ -5,6 +5,7 @@ import { userReducer } from './reducers/userReducer'
 import { productReducer,productDetailsReducer, newProductReducer } from './reducers/productReducers'
 import { newShopReducer, shopReducer, shopDetailsReducer } from './reducers/shopReducer'
 import { cartReducer } from './reducers/cartReducer'
+import { newOrderReducer } from './reducers/orderReducer'
 
 const reducer=combineReducers({
     products:productReducer,
@@ -14,7 +15,8 @@ const reducer=combineReducers({
     shopDetails: shopDetailsReducer,
     cart:cartReducer,
     newShop:newShopReducer,
-    newProduct:newProductReducer
+    newProduct:newProductReducer,
+    newOrder:newOrderReducer
 })
 
 let initialState={

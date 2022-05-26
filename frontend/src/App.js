@@ -33,13 +33,27 @@ import AdminShops from './admin/Shops/AdminShop';
 import AdminProducts from './admin/Products/AdminProduct';
 import AdminUsers from './admin/Users/AdminUser';
 
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
+import Payment from "./routes/Cart/Payment";
+// import axios from 'axios';
+
 
 function App() {
 
   const { user } = useSelector(state => state.user)
+  // const [stripeApiKey, setStripeApiKey] = useState("");
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("http://localhost:4000/api/v1/stripeapikey");
+
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
   
   useEffect(() => {
     store.dispatch(loadUser());
+
+    // getStripeApiKey();
+    
   }, [])
 
   return (
@@ -64,8 +78,14 @@ function App() {
             <Route path="*" element={<ErrorPage /> }/>
 
 
+
             { user ? (
               <>
+                {/* <Elements stripe={loadStripe(stripeApiKey)}>
+                   <Route  path="/process/payment" element={<Payment/>} />
+                </Elements> */}
+                <Route  path="/process/payment" element={<Payment/>} />
+              
                 <Route path="/account" element={<Profile /> }/>
 
                 <Route path="/shipping" element={<Shipping />} />
